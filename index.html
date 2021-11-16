@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <style>
+        body {
+            background-color: #e2e2e2;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div class="card text-center my-3">
+                    <h1>Age Calculator</h1>
+                    <p><small>Enter Your D.O.B**</small></p>
+                    <div class="row my-2 mx-2">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <!-- Date -->
+                                <input type="text" class="form-control" id="dateField" placeholder="Date">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <!-- month -->
+                                <select name="" id="monthField" class="form-control">
+                                    <option value="month" selected disabled>Months</option>
+                                    <option value="january">January</option>
+                                    <option value="february">February</option>
+                                    <option value="march">March</option>
+                                    <option value="april">April</option>
+                                    <option value="may">May</option>
+                                    <option value="june">June</option>
+                                    <option value="july">July</option>
+                                    <option value="augest">Auguest</option>
+                                    <option value="september">September</option>
+                                    <option value="october">October</option>
+                                    <option value="november">November</option>
+                                    <option value="december">December</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <!-- year -->
+                                <input type="text" id="yearField" class="form-control" placeholder="Year">
+                            </div>
+                        </div>
+                        <div class="p">
+                            <h3 id="para"></h3>
+                        </div>
+                        <div class="btn">
+                            <button class="btn btn-outline-warning btn-sm" onclick=" ageCalculator()">Claculate</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script>
+    ageCalculator = () => {
+        // getting value from document
+        let date = document.getElementById('dateField').value;
+        let month = document.getElementById('monthField').value;
+        let year = document.getElementById('yearField').value;
+        console.log(date);
+        console.log(month);
+        console.log(year);
+       
+        // parse
+        let dob = new Date(`${date} ${month} ${year}`);
+        let now = new Date();
+        let diffrence = now - dob;// answer will get but in milisecond
+        let calc = Math.round(diffrence / (1000 * 60 * 60 * 24 *365)); //milisecond convert into years
+        let para = document.getElementById("para");
+        para.innerHTML = calc;
+        console.log(dob);
+    };
+</script>
+
+</html>
